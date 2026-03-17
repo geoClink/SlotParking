@@ -7,22 +7,73 @@ protocol AuthServiceProtocol {
     func signOut() -> AnyPublisher<Bool, Never>
 }
 
+private struct StoredAttendant: Codable {
+    let id: String
+    let password: String
+}
+
 final class MockAuthService: AuthServiceProtocol {
     private(set) var currentUserId: String?
+    private let storageKey = "MockAttendants"
+    private var attendants: [String: StoredAttendant] = [:] // email -> StoredAttendant
+
+    init() {
+        load()
+        // Ensure a demo attendant exists for quick testing
+        let demoEmail = "attendant@example.com"
+        let demoPassword = "password123"
+        if attendants[demoEmail] == nil {
+            let id = UUID().uuidString
+            attendants[demoEmail] = StoredAttendant(id: id, password: demoPassword)
+            save()
+        }
+    }
 
     func signInAttendant(email: String, password: String) -> AnyPublisher<String, Error> {
-        // fake success with a generated user id
+        let normalized = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        // if attendant exists, verify password
+        if let stored = attendants[normalized] {
+            if stored.password == password {
+                currentUserId = stored.id
+                return Just(stored.id)
+                    .setFailureType(to: Error.self)
+                    .delay(for: .milliseconds(150), scheduler: RunLoop.main)
+                    .eraseToAnyPublisher()
+            } else {
+                return Fail(error: NSError(domain: "MockAuth", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid credentials"]))
+                    .eraseToAnyPublisher()
+            }
+        }
+
+        // if not existing, auto-register for test convenience
         let id = UUID().uuidString
+        let new = StoredAttendant(id: id, password: password)
+        attendants[normalized] = new
+        save()
         currentUserId = id
         return Just(id)
             .setFailureType(to: Error.self)
-            .delay(for: .milliseconds(200), scheduler: RunLoop.main)
+            .delay(for: .milliseconds(150), scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
 
     func signOut() -> AnyPublisher<Bool, Never> {
         currentUserId = nil
         return Just(true).eraseToAnyPublisher()
+    }
+
+    // Persistence helpers
+    private func load() {
+        guard let data = UserDefaults.standard.data(forKey: storageKey) else { return }
+        if let decoded = try? JSONDecoder().decode([String: StoredAttendant].self, from: data) {
+            attendants = decoded
+        }
+    }
+
+    private func save() {
+        if let data = try? JSONEncoder().encode(attendants) {
+            UserDefaults.standard.set(data, forKey: storageKey)
+        }
     }
 }
 

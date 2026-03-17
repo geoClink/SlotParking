@@ -1,4 +1,4 @@
-import SwiftUI
+o import SwiftUI
 
 struct AttendantPanelView: View {
     @EnvironmentObject var viewModel: LotsViewModel
@@ -35,6 +35,8 @@ struct AttendantPanelView: View {
     private func update(delta: Int) {
         isUpdating = true
         viewModel.updateAvailableSpots(lotId: lot.id, delta: delta)
+        // light haptic feedback to indicate update
+        Haptics.success()
         // small delay to allow the view model to update
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             isUpdating = false

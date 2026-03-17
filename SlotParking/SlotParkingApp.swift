@@ -18,10 +18,14 @@ import FirebaseMessaging
 struct SlotParkingApp: App {
     // register app delegate for Firebase setup when available
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
 
     var body: some Scene {
         WindowGroup {
             MVPContentView()
+                .fullScreenCover(isPresented: Binding(get: { !hasSeenOnboarding }, set: { _ in })) {
+                    OnboardingView(onFinish: { hasSeenOnboarding = true })
+                }
         }
     }
 }
