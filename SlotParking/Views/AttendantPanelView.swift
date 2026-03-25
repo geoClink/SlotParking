@@ -1,4 +1,4 @@
-o import SwiftUI
+import SwiftUI
 
 struct AttendantPanelView: View {
     @EnvironmentObject var viewModel: LotsViewModel
