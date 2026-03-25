@@ -2,12 +2,19 @@ import Foundation
 import Combine
 #if canImport(FirebaseFirestore)
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 #endif
+
+
 
 // Firebase-backed implementation of LotsServiceProtocol
 #if canImport(FirebaseFirestore)
 final class FirebaseLotsService: LotsServiceProtocol {
+    func registerLot(_ lot: ParkingLot) -> AnyPublisher<ParkingLot, Never> {
+        Just(lot)
+            .eraseToAnyPublisher()
+    }
+    
+    
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
 
@@ -50,7 +57,7 @@ final class FirebaseLotsService: LotsServiceProtocol {
                 return nil
             }
 
-            guard var data = snapshot.data() else { return nil }
+            guard let data = snapshot.data() else { return nil }
             let total = data["totalSpots"] as? Int ?? 0
             let available = data["availableSpots"] as? Int ?? 0
             let newAvailable = max(0, min(total, available + delta))
