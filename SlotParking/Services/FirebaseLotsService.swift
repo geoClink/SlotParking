@@ -15,12 +15,15 @@ final class FirebaseLotsService: LotsServiceProtocol {
     }
     
     
+    
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
 
     func fetchLots() -> AnyPublisher<[ParkingLot], Never> {
         let subject = PassthroughSubject<[ParkingLot], Never>()
-        listener = db.collection("lots").addSnapshotListener { snapshot, error in
+        listener = db.collection("lots")
+            .whereField("status", isEqualTo: "approved")
+            .addSnapshotListener { snapshot, error in
             var results: [ParkingLot] = []
             if let docs = snapshot?.documents {
                 for doc in docs {
