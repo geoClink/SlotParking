@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE2FDA122F74A1650020B006 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DE2FDA112F74A1650020B006 /* FirebaseAuth */; };
-		DE2FDA142F74A1650020B006 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = DE2FDA132F74A1650020B006 /* FirebaseCore */; };
-		DE2FDA162F74A1650020B006 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DE2FDA152F74A1650020B006 /* FirebaseFirestore */; };
+		6328D1172F74A42500098C56 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6328D1162F74A42500098C56 /* FirebaseAuth */; };
+		6328D1192F74A42500098C56 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6328D1182F74A42500098C56 /* FirebaseCore */; };
+		6328D11B2F74A42500098C56 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6328D11A2F74A42500098C56 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE2FDA142F74A1650020B006 /* FirebaseCore in Frameworks */,
-				DE2FDA122F74A1650020B006 /* FirebaseAuth in Frameworks */,
-				DE2FDA162F74A1650020B006 /* FirebaseFirestore in Frameworks */,
+				6328D1192F74A42500098C56 /* FirebaseCore in Frameworks */,
+				6328D1172F74A42500098C56 /* FirebaseAuth in Frameworks */,
+				6328D11B2F74A42500098C56 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +74,9 @@
 			);
 			name = SlotParking;
 			packageProductDependencies = (
-				DE2FDA112F74A1650020B006 /* FirebaseAuth */,
-				DE2FDA132F74A1650020B006 /* FirebaseCore */,
-				DE2FDA152F74A1650020B006 /* FirebaseFirestore */,
+				6328D1162F74A42500098C56 /* FirebaseAuth */,
+				6328D1182F74A42500098C56 /* FirebaseCore */,
+				6328D11A2F74A42500098C56 /* FirebaseFirestore */,
 			);
 			productName = SlotParking;
 			productReference = DE53CBC62F68ADBB00E26DB3 /* SlotParking.app */;
@@ -107,7 +107,7 @@
 			mainGroup = DE53CBBD2F68ADBB00E26DB3;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				DE2FDA102F74A1650020B006 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6328D1152F74A42500098C56 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DE53CBC72F68ADBB00E26DB3 /* Products */;
@@ -349,9 +349,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DE2FDA102F74A1650020B006 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		6328D1152F74A42500098C56 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.11.0;
@@ -360,19 +360,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DE2FDA112F74A1650020B006 /* FirebaseAuth */ = {
+		6328D1162F74A42500098C56 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DE2FDA102F74A1650020B006 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 6328D1152F74A42500098C56 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		DE2FDA132F74A1650020B006 /* FirebaseCore */ = {
+		6328D1182F74A42500098C56 /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DE2FDA102F74A1650020B006 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 6328D1152F74A42500098C56 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		DE2FDA152F74A1650020B006 /* FirebaseFirestore */ = {
+		6328D11A2F74A42500098C56 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DE2FDA102F74A1650020B006 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 6328D1152F74A42500098C56 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */

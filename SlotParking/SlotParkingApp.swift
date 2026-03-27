@@ -7,9 +7,7 @@
 
 import SwiftUI
 import UserNotifications
-#if canImport(FirebaseCore)
 import FirebaseCore
-#endif
 #if canImport(FirebaseMessaging)
 import FirebaseMessaging
 #endif
@@ -19,7 +17,7 @@ struct SlotParkingApp: App {
     // register app delegate for Firebase setup when available
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
-
+    
     var body: some Scene {
         WindowGroup {
             MVPContentView()
