@@ -4,7 +4,7 @@ SlotParking is an iOS SwiftUI app for discovering nearby parking lots, tracking 
 
 The current build is centered on Detroit-area parking and venues, with a driver-facing map/list experience and optional Firebase-backed data for realtime updates.
 
-[Backend Repo](https://github.com/geoClink/SlotParkingAdminWeb)
+[Back End Repo](https://github.com/geoClink/SlotParkingAdminWeb)
 ## Features
 
 - Browse parking lots on a map or in a list
